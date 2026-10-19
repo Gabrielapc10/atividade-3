@@ -8,21 +8,41 @@ var itens = [
 
 console.log(itens);
 
-
-
 function listarMenu(itens){
-    for( i=0; i < itens.length; i++){
+    for(let i=0; i < itens.length; i++){
         console.log("Cardapio",itens[i]);   
     }
 } 
-
 listarMenu(itens);
 
-var pedido = prompt("Qual o pedido:",pedido);
-var qtd = prompt("Quantidade:",qtd);
+var pedido = prompt("Qual o pedido:");
+var qtd = Number(prompt("Quantidade:"));
 
-function mult(preco,qtd){
-    let valor = preco * qtd
-    return valor
+let pedidos = []
+
+
+for(let i=0; i < itens.length ; i++){
+    if(pedido===itens[i].nome) {
+        console.log("Temos esse item:",itens[i]);
+
+        let total = itens[i].preco * qtd;
+        console.log("Valor total R$:", total);
+        console.log("Pedidos");
+        pedidos.push({ 
+            nome:pedido,
+            quantidade:qtd,
+            preco:itens[i].preco ,
+            total:total
+        });
+        break
+    } 
 }
 
+function listarPedidos(pedidos){
+    for(let i=0; i < pedidos.length; i++){
+        console.log("lista de Pedidos",pedidos[i]);
+        
+    }
+
+}
+listarPedidos(pedidos);

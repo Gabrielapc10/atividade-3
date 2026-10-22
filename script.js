@@ -9,8 +9,9 @@ var itens = [
 console.log(itens);
 
 function listarMenu(itens){
+    console.log("Cardapio");
     for(let i=0; i < itens.length; i++){
-        console.log("Cardapio",itens[i]);   
+        console.log(i+1,itens[i].nome,"|R$:",itens[i].preco,"|Categoria:",itens[i].categoria);   
     }
 } 
 listarMenu(itens);
@@ -20,29 +21,38 @@ var qtd = Number(prompt("Quantidade:"));
 
 let pedidos = []
 
-
+function cadastrarPedido(produto,quantidade){
+let encontrado = false
 for(let i=0; i < itens.length ; i++){
-    if(pedido===itens[i].nome) {
-        console.log("Temos esse item:",itens[i]);
-
-        let total = itens[i].preco * qtd;
-        console.log("Valor total R$:", total);
-        console.log("Pedidos");
+    if(produto===itens[i].nome) {
+        console.log("___________________");
+        encontrado = true
+        let total = itens[i].preco * quantidade;
         pedidos.push({ 
-            nome:pedido,
-            quantidade:qtd,
+            nome:produto,
+            quantidade:quantidade,
             preco:itens[i].preco ,
             total:total
         });
+        
         break
     } 
 }
+if(encontrado===false){
+    console.log("Não temos esse produto.");
+}
+}
+
+cadastrarPedido(pedido,qtd)
 
 function listarPedidos(pedidos){
+  
     for(let i=0; i < pedidos.length; i++){
-        console.log("lista de Pedidos",pedidos[i]);
-        
+        console.log("Pedido");
+        console.log("Pedido:", pedidos[i].nome);
+        console.log("Quantidade:", pedidos[i].quantidade);
+        console.log("Preço unitário: R$", pedidos[i].preco);
+        console.log("Valor total: R$", pedidos[i].total);       
     }
-
 }
 listarPedidos(pedidos);
